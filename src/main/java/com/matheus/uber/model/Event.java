@@ -1,12 +1,11 @@
 package com.matheus.uber.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 
 @Table(name = "event")
+@Entity(name = "event")
 @Data
 @Getter @Setter
 @AllArgsConstructor
@@ -15,9 +14,10 @@ import lombok.*;
 public class Event {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private Integer maxCap;
-    private Integer inscriptions;
+    private Integer registeredPart;
     private String date;
     private String Title;
     private String description;
