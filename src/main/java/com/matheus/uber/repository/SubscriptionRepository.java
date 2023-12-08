@@ -1,4 +1,4 @@
-package com.matheus.uber.Repository;
+package com.matheus.uber.repository;
 
 import com.matheus.uber.model.Subscription;
 import org.springframework.data.jpa.repository.JpaRepository;
