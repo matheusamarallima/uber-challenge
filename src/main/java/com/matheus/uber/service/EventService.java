@@ -8,10 +8,12 @@ import com.matheus.uber.model.Subscription;
 import com.matheus.uber.repository.EventRepository;
 import com.matheus.uber.repository.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class EventService {
 
     @Autowired
