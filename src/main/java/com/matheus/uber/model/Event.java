@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-@Table(name = "event")
-@Entity(name = "event")
+@Table(name = "events")
+@Entity
 @Data
 @Getter @Setter
 @AllArgsConstructor
