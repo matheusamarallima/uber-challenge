@@ -1,6 +1,8 @@
 package com.matheus.uber.service;
 
+import com.matheus.uber.dto.EmailDTO;
 import com.matheus.uber.dto.EventDTO;
+import com.matheus.uber.exp.EventNotFoundExp;
 import com.matheus.uber.model.Event;
 import com.matheus.uber.model.Subscription;
 import com.matheus.uber.repository.EventRepository;
@@ -37,4 +39,20 @@ public class EventService {
         Event event = new Event(eventDTO);
         return eventRepository.save(event);
     }
+
+    public void registerPart(String eventId, String emailPart){
+        Event event = eventRepository.findById(eventId).orElseThrow(EventNotFoundExp::new);
+        if(event.getRegisteredPart() < event.getMaxCap()){
+            Subscription subscription = new Subscription(event, emailPart);
+            subscriptionRepository.save(subscription);
+
+            event.setRegisteredPart(event.getRegisteredPart() + 1);
+
+            EmailDTO emailDTO = new EmailDTO(emailPart, "Evento", emailPart, "deu");
+
+            emailServiceClient.sendEmail(emailDTO);
+        }
+
+    }
+
 }

@@ -22,4 +22,8 @@ public class Subscription {
 
     private String emailPart;
 
+    public Subscription(Event event, String emailPart) {
+        this.event = event;
+        this.emailPart = emailPart;
+    }
 }
