@@ -1,5 +1,6 @@
 package com.matheus.uber.model;
 
+import com.matheus.uber.dto.EventDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,14 @@ public class Event {
     private Integer maxCap;
     private Integer registeredPart;
     private String date;
-    private String Title;
+    private String title;
     private String description;
+
+    public Event(EventDTO eventDTO) {
+        this.date = eventDTO.date();
+        this.maxCap = eventDTO.maxCap();
+        this.registeredPart = eventDTO.registeredPart();
+        this.title = eventDTO.title();
+        this.description = eventDTO.description();
+    }
 }
